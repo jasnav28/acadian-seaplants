@@ -8,25 +8,20 @@ export default function App() {
   const [product, setProduct] = useState(PRODUCTS[0]);
 
   useEffect(() => {
-    const DEFAULT_ALIAS = 'S-Root';
     const current = window.location.pathname || '/';
     const rawPath = current.replace(/^\//, '');
-    const effectivePath = rawPath || DEFAULT_ALIAS;
-    const found = findProductBySlug(effectivePath);
+    const found = findProductBySlug(rawPath || 'S-Root');
     setProduct(found);
-    
-    let desiredSlug = current;
-    if (!rawPath) {
-      desiredSlug = `/${encodeURIComponent(DEFAULT_ALIAS)}`;
-    } else {
-      // Always redirect to canonical brand name
-      desiredSlug = `/${encodeURIComponent(found.brand)}`;
-    }
 
-    if (current !== desiredSlug && decodeURIComponent(current) !== found.brand) {
+    const canonicalName = found.displayName || found.brand;
+
+    // Always redirect to canonical display name as URL
+    const desiredSlug = `/${encodeURIComponent(canonicalName)}`;
+
+    if (decodeURIComponent(current) !== `/${canonicalName}`) {
       window.history.replaceState(null, '', desiredSlug);
     }
-    document.title = `${found.brand} — Product Information`;
+    document.title = `${canonicalName} — Product Information`;
   }, []);
 
   return (
@@ -36,7 +31,7 @@ export default function App() {
         <div className="fixed inset-0 z-[200] bg-black flex items-center justify-center">
           <video
             className="max-h-screen w-auto"
-            src="/intro take 4.mp4"
+            src="/intro take 4asd.mp4"
             autoPlay
             muted
             playsInline
@@ -63,7 +58,7 @@ export default function App() {
       <header className="pt-0 sm:pt-0 mt-6 sm:mt-8 pb-6 text-center select-none">
         <div className="mx-auto w-[320px] sm:w-[500px] max-w-[92vw] h-[200px] sm:h-[260px] rounded-2xl bg-white/8 border border-white/20 backdrop-blur-md overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.25)] transition-transform duration-300 hover:-translate-y-0.5 hover:shadow-[0_30px_60px_rgba(0,0,0,0.3)]">
             <video 
-              src="/lo.mp4" 
+              src="/intro take 4.mp4" 
               className="w-full h-full object-cover rounded-2xl bg-white/8 backdrop-blur-md ring-1 ring-white/20 shadow-inner" 
               autoPlay 
               muted 

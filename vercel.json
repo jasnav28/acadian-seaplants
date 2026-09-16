@@ -4,8 +4,28 @@
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "redirects": [
-    { "source": "/Humus%20Carbon%20%2B%2B", "destination": "/HUMICID", "statusCode": 308 },
-    { "source": "/HUMICID\\+", "destination": "/HUMICID%2B", "statusCode": 308 },
-    { "source": "/HUMICID\\+\\+", "destination": "/HUMICID%2B%2B", "statusCode": 308 }
+    { "source": "/S-Root",        "destination": "/Rich%2B%20Humic%20BIO-VITA",  "statusCode": 308 },
+    { "source": "/s-root",        "destination": "/Rich%2B%20Humic%20BIO-VITA",  "statusCode": 308 },
+    { "source": "/S-SoilKing",    "destination": "/Rich%2B%20SOIL%20KING",       "statusCode": 308 },
+    { "source": "/S-LeafGuard",   "destination": "/Rich%2B%20LEAF%20GUARD",      "statusCode": 308 },
+    { "source": "/S-CropShield",  "destination": "/Rich%2B%20CROP%20SHIELD",     "statusCode": 308 },
+    { "source": "/S-Cytomax",     "destination": "/Rich%2B%20CYTOMAX",           "statusCode": 308 },
+    { "source": "/S-Prozyme25",   "destination": "/Rich%2B%20PROZYME%2025",      "statusCode": 308 },
+    { "source": "/S-GlutaVita",   "destination": "/Rich%2B%20GLUTA%20VITA",      "statusCode": 308 },
+    { "source": "/S-Prozyme17",   "destination": "/Rich%2B%20PROZYME%2017",      "statusCode": 308 },
+    { "source": "/S-BioAmino",    "destination": "/Rich%2B%20BIOAMINO%2B",       "statusCode": 308 },
+    { "source": "/S-SoilProG",    "destination": "/Rich%2B%20SOIL%20PRO%20G",    "statusCode": 308 },
+    { "source": "/S-AminoBlast5", "destination": "/Rich%2B%20AMINO%20BLAST%205", "statusCode": 308 },
+    { "source": "/S-Prozyme20",   "destination": "/Rich%2B%20PROZYME%2020",      "statusCode": 308 },
+    { "source": "/S-SeedPro27",   "destination": "/Rich%2B%20SEED%20PRO%2027",   "statusCode": 308 },
+    { "source": "/S-Pro20Plus",   "destination": "/Rich%2B%20PRO%2020%20PLUS",   "statusCode": 308 },
+    { "source": "/S-Amino14Plus", "destination": "/Rich%2B%20AMINO%2014%20PLUS", "statusCode": 308 },
+    { "source": "/S-Amino40Max",  "destination": "/Rich%2B%20AMINO%2040%20MAX",  "statusCode": 308 },
+    { "source": "/S-FloriBloom",  "destination": "/Rich%2B%20FLORI-BLOOM",        "statusCode": 308 },
+    { "source": "/S-VitaB3Boost", "destination": "/Rich%2B%20VITA%20B3%20BOOST",  "statusCode": 308 },
+    { "source": "/S-CropVita",    "destination": "/Rich%2B%20CROPVITA",            "statusCode": 308 },
+    { "source": "/Humus%20Carbon%20%2B%2B", "destination": "/HUMICID",           "statusCode": 308 },
+    { "source": "/HUMICID\\+",    "destination": "/HUMICID%2B",                  "statusCode": 308 },
+    { "source": "/HUMICID\\+\\+", "destination": "/HUMICID%2B%2B",               "statusCode": 308 }
   ]
 }
