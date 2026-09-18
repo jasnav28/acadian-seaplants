@@ -1,6 +1,7 @@
 export const GAZETTE_DEFAULT = '12th September, 2024 S.O. 3922(E)';
 export const GAZETTE_AUG25  = '13th August, 2025 S.O. 3741(E)';
 export const GAZETTE_MAY25  = '26th May, 2025 S.O. 2346(E)';
+export const GAZETTE_FEB26  = '16th February, 2026 S.O. 876(E)';
 
 const MANUFACTURER = {
   company: 'Richplus Sustainable Solutions Private Limited',
@@ -369,20 +370,75 @@ export const PRODUCTS = [
       '(iii) Cottonseed oil per cent. by weight, minimum 93',
       '(iv) Total (per cent.) 100'
     ]
+  },
+  {
+    brand: 'S-KelpPlus',
+    displayName: 'Kelp Plus',
+    specification: 'Mixture of seaweed extract and algal extract (Liquid)',
+    category: 'Mixed Formulations',
+    gazette: GAZETTE_MAY25,
+    crops: ['Brinjal'],
+    dosage: ['Two foliar applications at 500 mL/ha'],
+    manufacturedBy: MANUFACTURER,
+    marketedBy: MARKETER,
+    composition: [
+      '(i) Sargassum wightii extract per cent. weight by volume, minimum 2.2',
+      '(ii) Arthrospira platensis extract per cent. weight by volume, minimum 3.3',
+      '(iii) Water per cent. by weight QS',
+      '(iv) Total (per cent.) 100'
+    ]
+  },
+  {
+    brand: 'S-Profert',
+    displayName: 'Profert',
+    specification: 'Protein hydrolysate 18% (Plant source) (Liquid)',
+    category: 'Protein Hydrolysates and Amino Acids',
+    gazette: GAZETTE_FEB26,
+    crops: ['Paddy', 'Chilli', 'Tomato', 'Grape', 'Cotton', 'Blackgram'],
+    dosage: [
+      'Paddy : Two foliar applications at 1200 ml/ha',
+      'Chilli : Four foliar applications at 1000 ml/ha',
+      'Tomato : Three foliar applications at 1000 ml/ha',
+      'Grape : Two foliar applications at 1000 ml/ha',
+      'Cotton : One foliar application at 625 ml/ha',
+      'Black gram : Three foliar applications at 750 ml/ha'
+    ],
+    manufacturedBy: MANUFACTURER,
+    marketedBy: MARKETER,
+    composition: [
+      '(i) Protein hydrolysate derived through combination of enzymatic (Exo and endo proteases) and mild acid (HCl) hydrolysis of maize and soybean seed protein (9:1 ratio) per cent. by weight, minimum 18',
+      '(ii) Water per cent. by weight 82',
+      '(iii) Total (per cent.) 100'
+    ]
   }
 ];
 
 export function findProductBySlug(slug) {
   if (!slug) return PRODUCTS[0];
-  const decoded = decodeURIComponent(slug);
-  // Match by displayName (primary — used as URL)
-  const byDisplay = PRODUCTS.find(p => p.displayName === decoded);
+  const decoded = decodeURIComponent(slug).trim();
+  const lowerDecoded = decoded.toLowerCase();
+
+  // Match by exact displayName or case-insensitive
+  const byDisplay = PRODUCTS.find(
+    p => p.displayName === decoded || p.displayName.toLowerCase() === lowerDecoded
+  );
   if (byDisplay) return byDisplay;
+
   // Match by brand slug (fallback / backward compat)
   const byBrand = PRODUCTS.find(
-    p => p.brand === decoded || p.brand.toLowerCase() === decoded.toLowerCase()
+    p => p.brand === decoded || p.brand.toLowerCase() === lowerDecoded
   );
   if (byBrand) return byBrand;
+
+  // Flexible match ignoring non-alphanumeric (e.g. kelp-plus -> Kelp Plus, Rich+ Kelp Plus)
+  const normTarget = lowerDecoded.replace(/[^a-z0-9]/g, '');
+  const byFlexible = PRODUCTS.find(p => {
+    const normDisp = (p.displayName || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    const normBrand = (p.brand || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+    return normDisp === normTarget || normBrand === normTarget;
+  });
+  if (byFlexible) return byFlexible;
+
   // Default to first product
   return PRODUCTS[0];
 }
@@ -390,3 +446,4 @@ export function findProductBySlug(slug) {
 export function findProductByBrand(brand) {
   return PRODUCTS.find(p => p.brand === brand) || PRODUCTS[0];
 }
+

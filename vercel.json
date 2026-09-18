@@ -24,7 +24,10 @@
     { "source": "/S-FloriBloom",  "destination": "/Rich%2B%20FLORI-BLOOM",        "statusCode": 308 },
     { "source": "/S-VitaB3Boost", "destination": "/Rich%2B%20VITA%20B3%20BOOST",  "statusCode": 308 },
     { "source": "/S-CropVita",    "destination": "/Rich%2B%20CROPVITA",            "statusCode": 308 },
+    { "source": "/S-KelpPlus",    "destination": "/Kelp%20Plus",                   "statusCode": 308 },
+    { "source": "/S-Profert",     "destination": "/Profert",                       "statusCode": 308 },
     { "source": "/Humus%20Carbon%20%2B%2B", "destination": "/HUMICID",           "statusCode": 308 },
+
     { "source": "/HUMICID\\+",    "destination": "/HUMICID%2B",                  "statusCode": 308 },
     { "source": "/HUMICID\\+\\+", "destination": "/HUMICID%2B%2B",               "statusCode": 308 }
   ]
