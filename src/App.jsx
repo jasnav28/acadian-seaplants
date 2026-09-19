@@ -186,12 +186,14 @@ export default function App() {
               </div>
               <div className="flex-1 space-y-4">
                 <div>
-                  <div className="text-[#d9c98f] text-sm font-medium">Manufactured By:</div>
+                  <div className="text-[#d9c98f] text-sm font-medium">
+                    {product?.importedBy ? 'Imported By:' : 'Manufactured By:'}
+                  </div>
                   <div className="Comp text-white/90 text-sm sm:text-base font-semibold">
-                    {product?.manufacturedBy?.company || 'Richplus Sustainable Solutions Private Limited'}
+                    {product?.importedBy?.company || product?.manufacturedBy?.company || 'Richplus Sustainable Solutions Private Limited'}
                   </div>
                   <div className="text-white/90 text-sm sm:text-base">
-                    {product?.manufacturedBy?.address || '32/54,Flat No.5,Sreyas Chapakam Apartments, Abiramapuram,3rd Street,Teynampet,Chennai-600018'}
+                    {product?.importedBy?.address || product?.manufacturedBy?.address || '32/54,Flat No.5,Sreyas Chapakam Apartments, Abiramapuram,3rd Street,Teynampet,Chennai-600018'}
                   </div>
                 </div>
 

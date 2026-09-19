@@ -8,6 +8,11 @@ const MANUFACTURER = {
   address: '32/54, Flat No.5, Sreyas Chapakam Apartments, Abiramapuram, 3rd Street, Teynampet, Chennai-600018'
 };
 
+const IMPORTER = {
+  company: 'Richplus Sustainable Solutions Private Limited',
+  address: '32/54, Flat No.5, Sreyas Chapakam Apartments, Abiramapuram, 3rd Street, Teynampet, Chennai-600018'
+};
+
 const MARKETER = {
   company: 'Richplus Sustainable Solutions Private Limited',
   address: 'Ward No.6, Near A3 Hostel Raagini, Vinoba Nagara, Kolar, Kolar District, Karnataka-563101',
@@ -379,7 +384,7 @@ export const PRODUCTS = [
     gazette: GAZETTE_MAY25,
     crops: ['Brinjal'],
     dosage: ['Two foliar applications at 500 mL/ha'],
-    manufacturedBy: MANUFACTURER,
+    importedBy: IMPORTER,
     marketedBy: MARKETER,
     composition: [
       '(i) Sargassum wightii extract per cent. weight by volume, minimum 2.2',
@@ -403,7 +408,7 @@ export const PRODUCTS = [
       'Cotton : One foliar application at 625 ml/ha',
       'Black gram : Three foliar applications at 750 ml/ha'
     ],
-    manufacturedBy: MANUFACTURER,
+    importedBy: IMPORTER,
     marketedBy: MARKETER,
     composition: [
       '(i) Protein hydrolysate derived through combination of enzymatic (Exo and endo proteases) and mild acid (HCl) hydrolysis of maize and soybean seed protein (9:1 ratio) per cent. by weight, minimum 18',
