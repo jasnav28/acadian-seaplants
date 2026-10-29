@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator - Rex Crop Science</title>
+    <title>QR Code Generator - Acadian Seaplants</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -62,7 +62,7 @@
     </style>
 </head>
 <body>
-    <h1>Rex Crop Science - QR Code Generator</h1>
+    <h1>Acadian Seaplants - QR Code Generator</h1>
     <button class="btn" onclick="downloadAllPDFs()">Download All PDFs</button>
     <div class="grid" id="qrGrid"></div>
 
@@ -71,8 +71,8 @@
     <script>
         const { jsPDF } = window.jspdf;
         
-        const DOMAIN = 'https://rex-crop-science-pvt-ltd.vercel.app/';
-        const products = ['S-Root'];
+        const DOMAIN = 'https://richplus-eight.vercel.app/';
+        const products = ['PROMOCEAN', 'SOLIGRO GR', 'ACADIAN GOLDSTAR', 'STIMPLEX'];
 
         async function generateQRs() {
             const grid = document.getElementById('qrGrid');
@@ -109,7 +109,7 @@
                 });
 
                 doc.setFontSize(24);
-                doc.text('Rex Crop Science Pvt. Ltd.', 105, 50, { align: 'center' });
+                doc.text('Acadian Seaplants India Private Limited', 105, 50, { align: 'center' });
                 
                 doc.setFontSize(18);
                 doc.text(product, 105, 80, { align: 'center' });

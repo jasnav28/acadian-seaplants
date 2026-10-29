@@ -8,20 +8,26 @@ export default function App() {
   const [product, setProduct] = useState(PRODUCTS[0]);
 
   useEffect(() => {
-    const current = window.location.pathname || '/';
-    const rawPath = current.replace(/^\//, '');
-    const found = findProductBySlug(rawPath || 'S-Root');
-    setProduct(found);
+    const updateProduct = () => {
+      const current = window.location.pathname || '/';
+      const rawPath = current.replace(/^\//, '');
+      const found = findProductBySlug(rawPath || 'PROMOCEAN');
+      setProduct(found);
 
-    const canonicalName = found.displayName || found.brand;
+      const canonicalName = found?.displayName || found?.brand || 'PROMOCEAN';
 
-    // Always redirect to canonical display name as URL
-    const desiredSlug = `/${encodeURIComponent(canonicalName)}`;
+      // Always redirect to canonical display name as URL
+      const desiredSlug = `/${encodeURIComponent(canonicalName)}`;
 
-    if (decodeURIComponent(current) !== `/${canonicalName}`) {
-      window.history.replaceState(null, '', desiredSlug);
-    }
-    document.title = `${canonicalName} — Product Information`;
+      if (decodeURIComponent(current) !== `/${canonicalName}`) {
+        window.history.replaceState(null, '', desiredSlug);
+      }
+      document.title = `${canonicalName} — Product Information`;
+    };
+
+    updateProduct();
+    window.addEventListener('popstate', updateProduct);
+    return () => window.removeEventListener('popstate', updateProduct);
   }, []);
 
   return (
@@ -80,7 +86,7 @@ export default function App() {
               </div>
               <div className="flex-1">
                 <div className="text-[#d9c98f] text-xs sm:text-sm">Product Name:</div>
-                <div className="text-white text-xl sm:text-2xl font-semibold tracking-wide">{product?.displayName || product?.brand || 'HI POWER'}</div>
+                <div className="text-white text-xl sm:text-2xl font-semibold tracking-wide">{product?.displayName || product?.brand || 'PROMOCEAN'}</div>
               </div>
             </div>
           </StarBorder>
@@ -95,7 +101,7 @@ export default function App() {
               </div>
               <div className="flex-1">
                 <div className="text-[#d9c98f] text-sm">Gazette Notification:</div>
-                <div className="text-white text-base sm:text-lg whitespace-pre-wrap">{product?.gazette || 'SO:3922(E), Dated: 12th September ,2024'}</div>
+                <div className="text-white text-base sm:text-lg whitespace-pre-wrap">{product?.gazette || ''}</div>
               </div>
             </div>
           </StarBorder>
@@ -109,7 +115,7 @@ export default function App() {
                 <span className="text-lg">⚗️</span>
               </div>
               <div className="flex-1">
-                <div className="text-[#d9c98f] text-sm">Tittle of Bio Stimulant:</div>
+                <div className="text-[#d9c98f] text-sm">Title of Bio Stimulant:</div>
                 <div className="text-white text-base sm:text-lg">{product?.specification || ''}</div>
               </div>
             </div>
@@ -124,7 +130,7 @@ export default function App() {
                 <span className="text-lg">🏷️</span>
               </div>
               <div className="flex-1">
-                <div className="text-[#d9c98f] text-sm">Category:</div>
+                <div className="text-[#d9c98f] text-sm">Category of Fertilizers:</div>
                 <div className="text-white text-base sm:text-lg">{product?.category || ''}</div>
               </div>
             </div>
@@ -133,16 +139,13 @@ export default function App() {
 
         {/* Info grid with StarBorder */}
         <section className="mt-8 grid grid-cols-1 gap-4">
-          {/* Gazette moved to top */}
-
-
           <StarBorder as="div" className="w-full" color="cyan" speed="5s" thickness={2}>
             <div className="flex items-start">
               <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-[#e8d8a6]/25 text-[#e8d8a6] mr-3 shadow-inner">
                 <span className="text-lg">🧪</span>
               </div>
               <div className="flex-1">
-                <div className="text-[#d9c98f] text-sm">Composition</div>
+                <div className="text-[#d9c98f] text-sm">Composition:</div>
                 {(product?.composition || []).length ? (
                   <ul className="mt-1 text-sm sm:text-base text-white list-none pl-0 space-y-1">
                     {(product?.composition || []).map((line, idx) => (
@@ -190,20 +193,20 @@ export default function App() {
                     {product?.importedBy ? 'Imported By:' : 'Manufactured By:'}
                   </div>
                   <div className="Comp text-white/90 text-sm sm:text-base font-semibold">
-                    {product?.importedBy?.company || product?.manufacturedBy?.company || 'Richplus Sustainable Solutions Private Limited'}
+                    {product?.importedBy?.company || product?.manufacturedBy?.company || 'Acadian Seaplants India Private Limited'}
                   </div>
-                  <div className="text-white/90 text-sm sm:text-base">
-                    {product?.importedBy?.address || product?.manufacturedBy?.address || '32/54,Flat No.5,Sreyas Chapakam Apartments, Abiramapuram,3rd Street,Teynampet,Chennai-600018'}
+                  <div className="text-white/90 text-sm sm:text-base whitespace-pre-line">
+                    {product?.importedBy?.address || product?.manufacturedBy?.address || 'Shed No.5,Unit 5,Survey No.546/547,\nAt & Post:Moxi,Savli,Dist.Vadodara,Gujarat-391780'}
                   </div>
                 </div>
 
                 <div className="pt-3 border-t border-white/15">
                   <div className="text-[#d9c98f] text-sm font-medium">Marketed By:</div>
                   <div className="Comp text-white/90 text-sm sm:text-base font-semibold">
-                    {product?.marketedBy?.company || 'Richplus Sustainable Solutions Private Limited'}
+                    {product?.marketedBy?.company || 'Acadian Seaplants India Private Limited'}
                   </div>
-                  <div className="text-white/90 text-sm sm:text-base">
-                    {product?.marketedBy?.address || 'Ward No.6,Near A3 Hostel Raagini,Vinoba Nagara, Kolar,Kolar District,Karnataka-563101'}
+                  <div className="text-white/90 text-sm sm:text-base whitespace-pre-line">
+                    {product?.marketedBy?.address || 'Site No.16,Khata No.102/1 & 103/2,\n1st Cross,Raju Sangappa Layout,ward No.15,\nBehind MRPL Petrol Bunk,Tadagani,Shiralakoppa,\nShivamogga District,Karnataka-577428'}
                   </div>
                   {product?.marketedBy?.phone && (
                     <div className="text-white/90 text-sm sm:text-base">Phone: {product.marketedBy.phone}</div>

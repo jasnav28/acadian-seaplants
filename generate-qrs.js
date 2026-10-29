@@ -42,9 +42,9 @@ for (const product of PRODUCTS) {
 
     // Company header
     doc
-      .fontSize(22)
+      .fontSize(20)
       .font('Helvetica-Bold')
-      .text('Richplus Sustainable Solutions Pvt. Ltd.', { align: 'center' })
+      .text(product.manufacturedBy?.company || 'Acadian Seaplants India Private Limited', { align: 'center' })
       .moveDown(0.5);
 
     // Divider
